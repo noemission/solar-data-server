@@ -16,24 +16,29 @@ module.exports = function (app) {
   
   app.use('/data', (req, res) => {
     const str = req.body;
-    try {
-      const parsedStr = str.match(/(\d)\s(.*)/);
-      const sensorIndex = parseInt(parsedStr[1]);
-      const sensorValue = parseFloat(parsedStr[2]);
-      const sensorType = getSensor(sensorIndex);
-      if(!sensorType) throw 'Unknown sensor';
-      if(isNaN(sensorValue)) throw 'Sensor value is NAN';
-      console.log({
-        sensorType,
-        sensorValue
-      });
-      app.service('sensor-data').create({
-        sensor: sensorType,
-        value: sensorValue,
-      });
-    } catch (error) {
-      console.error(error);
-    }
+    str.split('\n').forEach(line => {
+      if(!line) return;
+      try {
+        const parsedStr = line.match(/(\d)\s(.*)/);
+        const sensorIndex = parseInt(parsedStr[1]);
+        let sensorValue = parseFloat(parsedStr[2]);
+        const sensorType = getSensor(sensorIndex);
+        if(!sensorType) throw 'Unknown sensor';
+        if(isNaN(sensorValue)) throw 'Sensor value is NAN';
+        sensorValue = sensorValue > 0 ? sensorValue : 0;
+        console.log({
+          sensorType,
+          sensorValue
+        });
+        app.service('sensor-data').create({
+          sensor: sensorType,
+          value: sensorValue,
+        });
+      } catch (error) {
+        console.error(error);
+      }
+    });
+    
     res.send('OK');
   });
 
