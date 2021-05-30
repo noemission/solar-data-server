@@ -6,7 +6,7 @@ const MyPlugin = {
   install : function(Vue){
 
     // Initialize services API connection
-    const socket = io("http://friz.xyz:3002/")
+    const socket = io("https://solar.friz.xyz/")
     const api = feathers()
     
     api.configure(
