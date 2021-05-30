@@ -15,7 +15,7 @@
           </v-row>
 
           <v-row justify="center">
-            <v-col md="6" lg="6" cols="12">
+            <v-col lg="6" cols="12">
               <v-card elevation="5">
                 <chart
                   title="Inverter current"
@@ -26,7 +26,7 @@
               </v-card>
             </v-col>
 
-            <v-col md="6" lg="6" cols="12">
+            <v-col lg="6" cols="12">
               <v-card elevation="5">
                 <chart
                   title="Solar current"
@@ -37,7 +37,7 @@
               </v-card>
             </v-col>
 
-            <v-col md="6" lg="6" cols="12">
+            <v-col lg="6" cols="12">
               <v-card elevation="5">
                 <chart
                   title="Battery voltage"
