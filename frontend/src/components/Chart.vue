@@ -60,6 +60,7 @@ export default {
         xAxis: {
           type: "time",
           name: "Time",
+          maxInterval: 3600 * 24 * 1000 ,
         },
         grid: {
           left: '2%',

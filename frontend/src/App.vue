@@ -7,7 +7,7 @@
             <v-col md="4" cols="12" v-for="sensorData in sensors" :key="sensorData.type">
               <main-card
                 v-if="sensorData.latest.time"
-                :timestamp="sensorData.latest.time.toLocaleString()"
+                :timestamp="sensorData.latest.time"
                 :value="sensorData.latest.value"
                 :sensor-type="sensorData.type"
               />
