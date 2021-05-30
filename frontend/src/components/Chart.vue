@@ -61,6 +61,12 @@ export default {
           type: "time",
           name: "Time",
         },
+        grid: {
+          left: '2%',
+          right: '13%',
+          bottom: '3%',
+          containLabel: true,
+        },
         yAxis: {
           name: this.yTitle,
           type: "value",

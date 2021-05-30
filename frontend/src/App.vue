@@ -4,7 +4,7 @@
       <v-main>
         <v-container fluid>
           <v-row>
-            <v-col v-for="sensorData in sensors" :key="sensorData.type">
+            <v-col cols="12" v-for="sensorData in sensors" :key="sensorData.type">
               <main-card
                 v-if="sensorData.latest.time"
                 :timestamp="sensorData.latest.time.toLocaleString()"
@@ -14,8 +14,8 @@
             </v-col>
           </v-row>
 
-          <v-row justify="center">
-            <v-col lg="6" cols="12">
+          <v-row justify="center" no-gutters>
+            <v-col lg="6" cols="12" class="py-2">
               <v-card elevation="5">
                 <chart
                   title="Inverter current"
@@ -26,7 +26,7 @@
               </v-card>
             </v-col>
 
-            <v-col lg="6" cols="12">
+            <v-col lg="6" cols="12" class="py-2">
               <v-card elevation="5">
                 <chart
                   title="Solar current"
@@ -37,7 +37,7 @@
               </v-card>
             </v-col>
 
-            <v-col lg="6" cols="12">
+            <v-col lg="6" cols="12" class="py-2">
               <v-card elevation="5">
                 <chart
                   title="Battery voltage"
