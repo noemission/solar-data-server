@@ -4,7 +4,7 @@
       <v-main>
         <v-container fluid>
           <v-row>
-            <v-col cols="12" v-for="sensorData in sensors" :key="sensorData.type">
+            <v-col md="4" cols="12" v-for="sensorData in sensors" :key="sensorData.type">
               <main-card
                 v-if="sensorData.latest.time"
                 :timestamp="sensorData.latest.time.toLocaleString()"
