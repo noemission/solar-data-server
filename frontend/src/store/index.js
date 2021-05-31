@@ -5,9 +5,9 @@ Vue.use(Vuex)
 
 const mapSensorData = (data) => {
   return {
-    time: new Date(data.updatedAt),
+    time: new Date(data.date),
     value: data.value,
-    id: data._id
+    // id: data._id
   }
 }
 
@@ -64,12 +64,12 @@ export default new Vuex.Store({
         let $skip = 0;
         let total;
         do {
-          const response = await this._vm.$api.service('sensor-data').find({
+          const response = await this._vm.$api.service('sensor-data-cleaned').find({
             query: {
               sensor: type,
-              updatedAt: { $gte: new Date(Date.now() - 7 * 24 * 60 * 60 * 1000) }, // 7 days before
-              $sort: { updatedAt: -1 },
-              $select: ['updatedAt', 'sensor', 'value'],
+              date: { $gte: new Date(Date.now() - 7 * 24 * 60 * 60 * 1000) }, // 7 days before
+              $sort: { date: -1 },
+              $select: ['date', 'sensor', 'value'],
               $limit,
               $skip,
             },
@@ -89,12 +89,12 @@ export default new Vuex.Store({
     getLatestSensorValues({ commit, state }) {
       state.sensors.map(async ({ type }) => {
 
-        const { data } = await this._vm.$api.service('sensor-data').find({
+        const { data } = await this._vm.$api.service('sensor-data-cleaned').find({
           query: {
             sensor: type,
             $limit: 1,
-            $sort: { updatedAt: -1 },
-            $select: ['updatedAt', 'sensor', 'value']
+            $sort: { date: -1 },
+            $select: ['date', 'sensor', 'value']
           }
         });
         commit('setLatestSensorValue', {
