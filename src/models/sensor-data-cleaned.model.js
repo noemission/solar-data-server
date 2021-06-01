@@ -21,7 +21,7 @@ module.exports = function (app) {
           $group: {
             _id: {
               sensor: '$sensor',
-              date: { $dateToString: { format: '%Y-%m-%dT%H:%M:%S%z', date: '$updatedAt' } },
+              date: { $dateToString: { format: '%Y-%m-%dT%H:%M:00%z', date: '$updatedAt' } },
             },
             value: { $avg: '$value' }
           }
