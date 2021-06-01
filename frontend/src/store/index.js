@@ -72,7 +72,7 @@ export default new Vuex.Store({
               sensor: type,
               date: { $gte: new Date(Date.now() - 7 * 24 * 60 * 60 * 1000) }, // 7 days before
               $sort: { date: -1 },
-              $select: ['date', 'sensor', 'value'],
+              $select: ['date', 'value'],
               $limit,
               $skip,
             },
@@ -97,7 +97,7 @@ export default new Vuex.Store({
             sensor: type,
             $limit: 1,
             $sort: { date: -1 },
-            $select: ['date', 'sensor', 'value']
+            $select: ['date', 'value']
           }
         });
         commit('setLatestSensorValue', {
