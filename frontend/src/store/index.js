@@ -51,8 +51,8 @@ export default new Vuex.Store({
   actions: {
     initEvents({ dispatch }) {
       console.log('init events')
-      const getSensorValues = throttle(() => dispatch('getSensorValues'), 2000, { trailing: true })
-      const getLatestSensorValues = throttle(() => dispatch('getLatestSensorValues'), 2000, { trailing: true })
+      const getSensorValues = throttle(() => dispatch('getSensorValues'), 2000)
+      const getLatestSensorValues = throttle(() => dispatch('getLatestSensorValues'), 2000)
       this._vm.$api.service('sensor-data')
         .on('created', () => {
           getSensorValues();
