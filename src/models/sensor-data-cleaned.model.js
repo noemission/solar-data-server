@@ -30,7 +30,7 @@ module.exports = function (app) {
           $set: {
             _id: '$$REMOVE',
             sensor: '$_id.sensor',
-            value:  { $trunc : [ '$value' , 2 ] },
+            value:  { $round : [ '$value' , 1 ] },
             date: {
               $dateFromString: {
                 dateString: '$_id.date',
