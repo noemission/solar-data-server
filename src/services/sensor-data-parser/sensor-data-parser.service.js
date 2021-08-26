@@ -26,6 +26,9 @@ module.exports = function (app) {
         if(!sensorType) throw 'Unknown sensor';
         if(isNaN(sensorValue)) throw 'Sensor value is NAN';
         sensorValue = sensorValue > 0 ? sensorValue : 0;
+        if(sensorType === 'BATTERY_VOLTAGE'){
+          sensorValue = sensorValue - 0.4;
+        }
         console.log({
           sensorType,
           sensorValue
